@@ -1,8 +1,1 @@
-Modify this file with a description of your mod, this will show up on the Steam Workshop page when you publish the mod.
-
-You may delete this file if you want the Workshop page to use the exact same description as the one in description.txt
-[list]
-	[*] Steam Workshop pages allow for more flexible formatting, 
-	[*] [h1]check out https://steamcommunity.com/comment/Guide/formattinghelp for a list of formatting options[/h1]
-[/list]
-
+This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
