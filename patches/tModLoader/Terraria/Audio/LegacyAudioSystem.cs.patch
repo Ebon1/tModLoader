@@ -63,24 +63,18 @@
  	public void LoadCue(int cueIndex, string cueName)
  	{
  		CueAudioTrack cueAudioTrack = new CueAudioTrack(SoundBank, cueName);
-@@ -245,18 +_,25 @@
+@@ -245,18 +_,19 @@
  					MusicReplayDelay = Main.rand.Next(14400, 21601);
  
  				AudioTracks[i].Reuse();
-+				if (MusicID.Sets.SkipsVolumeRemap[i])
-+					AudioTracks[i].SetVariable("VolumeDirect", totalVolume);
-+				else
 -				AudioTracks[i].SetVariable("Volume", totalVolume);
-+					AudioTracks[i].SetVariable("Volume", totalVolume);
++				AudioTracks[i].SetVariable(MusicID.Sets.SkipsVolumeRemap[i] ? "VolumeDirect" : "Volume", totalVolume);
  				AudioTracks[i].Play();
  			}
  		}
  		else {
-+			if (MusicID.Sets.SkipsVolumeRemap[i])
-+				AudioTracks[i].SetVariable("VolumeDirect", totalVolume);
-+			else
 -			AudioTracks[i].SetVariable("Volume", totalVolume);
-+				AudioTracks[i].SetVariable("Volume", totalVolume);
++			AudioTracks[i].SetVariable(MusicID.Sets.SkipsVolumeRemap[i] ? "VolumeDirect" : "Volume", totalVolume);
  		}
  	}
  
@@ -92,15 +86,12 @@
  			return;
  
  		if (AudioTracks[i].IsPlaying || !AudioTracks[i].IsStopped) {
-@@ -271,7 +_,10 @@
+@@ -271,7 +_,7 @@
  				AudioTracks[i].Stop(AudioStopOptions.Immediate);
  			}
  			else {
-+				if (MusicID.Sets.SkipsVolumeRemap[i])
-+					AudioTracks[i].SetVariable("VolumeDirect", totalVolume);
-+				else
 -				AudioTracks[i].SetVariable("Volume", totalVolume);
-+					AudioTracks[i].SetVariable("Volume", totalVolume);
++				AudioTracks[i].SetVariable(MusicID.Sets.SkipsVolumeRemap[i] ? "VolumeDirect"  : "Volume", totalVolume);
  			}
  		}
  		else {

@@ -5,7 +5,6 @@ namespace Terraria.ID;
 
 public static class MusicID
 {
-
 	public static partial class Sets
 	{
 		public static SetFactory Factory = new SetFactory(MusicLoader.MusicCount);
