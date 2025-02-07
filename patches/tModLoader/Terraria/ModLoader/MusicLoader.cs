@@ -229,6 +229,10 @@ public sealed class MusicLoader : ILoader
 		if (Main.audioSystem is not LegacyAudioSystem legacyAudioSystem)
 			return;
 
+		//Sets
+		LoaderUtils.ResetStaticMembers(typeof(MusicID));
+
+		//Etc
 		Array.Resize(ref legacyAudioSystem.AudioTracks, MusicCount);
 		Array.Resize(ref Main.musicFade, MusicCount);
 		Array.Resize(ref Main.musicNoCrossFade, MusicCount);
