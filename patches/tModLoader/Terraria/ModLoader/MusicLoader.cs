@@ -21,6 +21,7 @@ public sealed class MusicLoader : ILoader
 	internal static readonly Dictionary<int, Dictionary<int, int>> tileToMusic = new();
 	internal static readonly Dictionary<string, int> musicByPath = new();
 	internal static readonly Dictionary<string, string> musicExtensions = new();
+	internal static readonly Dictionary<int, bool> musicSkipsVolumeRemap = new();
 
 	public static int MusicCount { get; private set; } = MusicID.Count;
 
@@ -94,6 +95,7 @@ public sealed class MusicLoader : ILoader
 
 		musicByPath[musicPath] = id;
 		musicExtensions[musicPath] = chosenExtension;
+		musicSkipsVolumeRemap[id] = mod.MusicSkipsVolumeRemap;
 	}
 
 	/// <summary>
@@ -244,6 +246,7 @@ public sealed class MusicLoader : ILoader
 				return;
 
 			legacyAudioSystem.AudioTracks[slot] = GetMusic(sound);
+			MusicID.Sets.SkipsVolumeRemap[slot] = musicSkipsVolumeRemap[slot];
 		}
 
 		Main.audioSystem = legacyAudioSystem;
@@ -256,6 +259,7 @@ public sealed class MusicLoader : ILoader
 		tileToMusic.Clear();
 		musicByPath.Clear();
 		musicExtensions.Clear();
+		musicSkipsVolumeRemap.Clear();
 		MusicCount = MusicID.Count;
 	}
 }
